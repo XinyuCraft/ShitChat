@@ -2,5 +2,7 @@
     <qresource prefix="/style"/>
     <qresource prefix="/image">
         <file>sky.jpg</file>
+        <file>close.png</file>
+        <file>minimize.png</file>
     </qresource>
 </RCC>

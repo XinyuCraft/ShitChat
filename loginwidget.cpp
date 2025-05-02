@@ -40,11 +40,11 @@ void LoginWidget::mouseReleaseEvent(QMouseEvent *event) //鼠标抬起
 
 void LoginWidget::mouseMoveEvent(QMouseEvent *event) //鼠标移动
 {
-    if(!isLeftPressd){
-        this->mouseWhere(event->globalPos());
-    }
+    // if(!isLeftPressd){
+    //     this->mouseWhere(event->globalPos());
+    // }
 
-    if(isLeftPressd && location == TOP){ //移动窗口
+    if(isLeftPressd){ //移动窗口
         move(event->globalPos() - mouseOffset);
         event->accept();
     }
@@ -72,18 +72,30 @@ bool LoginWidget::event(QEvent *event)
 //     painter.drawRoundedRect(rect, 15, 15);
 // }
 
-void LoginWidget::mouseWhere(const QPoint& point) //判断鼠标位置
+// void LoginWidget::mouseWhere(const QPoint& point) //判断鼠标位置
+// {
+//     QRect rect = this->rect();
+//     QPoint topLeft = mapToGlobal(rect.topLeft());
+
+//     int x = point.x();
+//     int y = point.y();
+
+//     if(y >= topLeft.y() && y <= topLeft.y() + PADDING){ //判断位置是否为上方
+//         location = TOP;
+//     }
+//     else{ //否则在窗口中央
+//         location = CENTER;
+//     }
+// }
+
+void LoginWidget::on_CloseButton_clicked() //关闭按钮
 {
-    QRect rect = this->rect();
-    QPoint topLeft = mapToGlobal(rect.topLeft());
-
-    int x = point.x();
-    int y = point.y();
-
-    if(y >= topLeft.y() && y <= topLeft.y() + PADDING){ //判断位置是否为上方
-        location = TOP;
-    }
-    else{ //否则在窗口中央
-        location = CENTER;
-    }
+    this->close();
 }
+
+
+void LoginWidget::on_MinimizeButton_clicked() //最小化按钮
+{
+    this->showMinimized();
+}
+

@@ -29,15 +29,50 @@
    <string notr="true">
 /* 窗口 */
 QFrame#frame {
-	background-color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
 	border-radius:50px
 }
+
+QWidget#LoginPage {
+}
+
 /* 背景图片 */
 QLabel#background_image {
-	background-color: rgb(255, 255, 255);
-	border-image: url(:/image/sky.jpg) 0 0 0 0 stretch stretch;
-	border-bottom-left-radius: 50px;
-	border-bottom-right-radius: 50px;
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));
+	border-radius:50px
+}
+/* 标题 */
+QLabel#TitleLabel {
+
+}
+/* 关闭按钮 */
+QPushButton#CloseButton {
+	border: none;
+	background: transparent;
+	qproperty-icon: url(:/image/close.png); 
+	qproperty-iconSize: 50px 50px;
+}
+/* 最小化按钮 */
+QPushButton#MinimizeButton {
+	border: none;
+	background: transparent;
+	qproperty-icon: url(:/image/minimize.png); 
+	qproperty-iconSize: 50px 50px;
+}
+
+/* 登录按钮 */
+QPushButton#LoginButton {
+	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));
+	border-radius:20px;
+	color: rgb(255, 255, 255);
+}
+/* 输入框 */
+QLineEdit {
+	padding-left:10px;
+	border:1px solid black;
+	border-radius:20px
 }</string>
   </property>
   <widget class="QFrame" name="frame">
@@ -59,14 +94,121 @@ QLabel#background_image {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>50</y>
-      <width>800</width>
-      <height>430</height>
+      <y>0</y>
+      <width>400</width>
+      <height>480</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>0</y>
+      <width>400</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="LoginPage">
+     <widget class="QLabel" name="LoginLabel">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>300</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt; font-weight:700;&quot;&gt;Login | 登录&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="UserNameLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>170</y>
+        <width>280</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>用户名</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="PassWordLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>250</y>
+        <width>280</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+      <property name="placeholderText">
+       <string>密码</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LoginButton">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>370</y>
+        <width>301</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>登录</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="RegisterPage">
+     <widget class="QLabel" name="RegisterLabel">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>400</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt; font-weight:700;&quot;&gt;Register | 注册&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>240</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

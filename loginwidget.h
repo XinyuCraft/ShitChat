@@ -8,10 +8,10 @@
 
 #define PADDING 50
 
-enum Location { //鼠标位置
-    TOP,
-    CENTER
-};
+// enum Location { //鼠标位置
+//     TOP,
+//     CENTER
+// };
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,12 +35,17 @@ protected:
 
     // void paintEvent(QPaintEvent *event);
 
+private slots:
+    void on_CloseButton_clicked();
+
+    void on_MinimizeButton_clicked();
+
 private:
     void mouseWhere(const QPoint &point);
 
     bool isLeftPressd; //左键是否按下
     QPoint mouseOffset; //鼠标位置
-    Location location;
+    // Location location;
     Ui::LoginWidget *ui;
 };
 #endif // LOGINWIDGET_H
