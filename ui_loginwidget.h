@@ -117,7 +117,7 @@ public:
         PassWordLineEdit->setEchoMode(QLineEdit::Password);
         LoginButton = new QPushButton(LoginPage);
         LoginButton->setObjectName("LoginButton");
-        LoginButton->setGeometry(QRect(50, 370, 301, 51));
+        LoginButton->setGeometry(QRect(50, 370, 300, 50));
         stackedWidget->addWidget(LoginPage);
         RegisterPage = new QWidget();
         RegisterPage->setObjectName("RegisterPage");
