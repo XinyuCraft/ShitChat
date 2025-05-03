@@ -31,9 +31,12 @@ public:
     QLineEdit *UserNameLineEdit;
     QLineEdit *PassWordLineEdit;
     QPushButton *LoginButton;
+    QLabel *toRegisterLabel;
     QWidget *RegisterPage;
     QLabel *RegisterLabel;
-    QLineEdit *lineEdit;
+    QLineEdit *UserNameLineEdit_reg;
+    QLineEdit *EmailLineEdit_reg;
+    QPushButton *CloseButton;
 
     void setupUi(QWidget *LoginWidget)
     {
@@ -58,9 +61,13 @@ public:
 "							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));\n"
 "	border-radius:50px\n"
 "}\n"
-"/* \346\240\207\351\242\230 */\n"
-"QLabel#TitleLabel {\n"
-"\n"
+"/* \345\211\215\345\276\200\347\231\273\345\275\225/\346\263\250\345\206\214\350\266\205\351\223\276\346\216\245 */\n"
+"QLabel#toRegisterLabel {\n"
+"	color: rgb(0, 85, 255);\n"
+"}\n"
+"QLabel#toRegisterLabel:hover {\n"
+"	color: rgb(0, 85, 255);\n"
+"	text-decoration: underline;\n"
 "}\n"
 "/* \345\205\263\351\227\255\346\214\211\351\222\256 */\n"
 "QPushButton#CloseButton {\n"
@@ -70,7 +77,8 @@ public:
 "	qproperty-iconSize: 50px 50px;\n"
 "}\n"
 "/* \346\234\200\345\260\217\345\214\226\346\214\211\351\222\256 */\n"
-"QPushButton#MinimizeButton {\n"
+"QPushButton#Minimiz"
+                        "eButton {\n"
 "	border: none;\n"
 "	background: transparent;\n"
 "	qproperty-icon: url(:/image/minimize.png); \n"
@@ -78,8 +86,7 @@ public:
 "}\n"
 "\n"
 "/* \347\231\273\345\275\225\346\214\211\351\222\256 */\n"
-""
-                        "QPushButton#LoginButton {\n"
+"QPushButton#LoginButton {\n"
 "	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,\n"
 "							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));\n"
 "	border-radius:20px;\n"
@@ -118,16 +125,25 @@ public:
         LoginButton = new QPushButton(LoginPage);
         LoginButton->setObjectName("LoginButton");
         LoginButton->setGeometry(QRect(50, 370, 300, 50));
+        toRegisterLabel = new QLabel(LoginPage);
+        toRegisterLabel->setObjectName("toRegisterLabel");
+        toRegisterLabel->setGeometry(QRect(50, 430, 110, 20));
         stackedWidget->addWidget(LoginPage);
         RegisterPage = new QWidget();
         RegisterPage->setObjectName("RegisterPage");
         RegisterLabel = new QLabel(RegisterPage);
         RegisterLabel->setObjectName("RegisterLabel");
         RegisterLabel->setGeometry(QRect(0, 40, 400, 100));
-        lineEdit = new QLineEdit(RegisterPage);
-        lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(60, 240, 181, 41));
+        UserNameLineEdit_reg = new QLineEdit(RegisterPage);
+        UserNameLineEdit_reg->setObjectName("UserNameLineEdit_reg");
+        UserNameLineEdit_reg->setGeometry(QRect(90, 220, 181, 41));
+        EmailLineEdit_reg = new QLineEdit(RegisterPage);
+        EmailLineEdit_reg->setObjectName("EmailLineEdit_reg");
+        EmailLineEdit_reg->setGeometry(QRect(80, 150, 211, 51));
         stackedWidget->addWidget(RegisterPage);
+        CloseButton = new QPushButton(frame);
+        CloseButton->setObjectName("CloseButton");
+        CloseButton->setGeometry(QRect(750, 0, 50, 50));
 
         retranslateUi(LoginWidget);
 
@@ -148,7 +164,9 @@ public:
         PassWordLineEdit->setText(QString());
         PassWordLineEdit->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\345\257\206\347\240\201", nullptr));
         LoginButton->setText(QCoreApplication::translate("LoginWidget", "\347\231\273\345\275\225", nullptr));
+        toRegisterLabel->setText(QCoreApplication::translate("LoginWidget", "\346\262\241\346\234\211\350\264\246\345\217\267? \345\211\215\345\276\200\346\263\250\345\206\214", nullptr));
         RegisterLabel->setText(QCoreApplication::translate("LoginWidget", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:700;\">Register | \346\263\250\345\206\214</span></p></body></html>", nullptr));
+        CloseButton->setText(QString());
     } // retranslateUi
 
 };
