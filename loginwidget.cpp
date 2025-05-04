@@ -94,10 +94,10 @@ void LoginWidget::on_CloseButton_clicked() //关闭按钮
 }
 
 
-void LoginWidget::on_MinimizeButton_clicked() //最小化按钮
-{
-    this->showMinimized();
-}
+// void LoginWidget::on_MinimizeButton_clicked() //最小化按钮
+// {
+//     this->showMinimized();
+// }
 
 
 void LoginWidget::on_toRegisterLabel_linkActivated(const QString &link)
@@ -122,5 +122,16 @@ void LoginWidget::on_toRegisterLabel_2_linkActivated(const QString &link)
 {
     ui->stackedWidget->setCurrentIndex(0);
     isLeftPressd = false; //防止冲突
+}
+
+
+void LoginWidget::on_PasswordCheckBox_reg_stateChanged(int arg1)
+{
+    if(ui->PasswordCheckBox_reg->isChecked()) {
+        ui->PasswordLineEdit_reg->setEchoMode(QLineEdit::Normal);
+    }
+    else {
+        ui->PasswordLineEdit_reg->setEchoMode(QLineEdit::Password);
+    }
 }
 
