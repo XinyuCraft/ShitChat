@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -29,13 +30,17 @@ public:
     QWidget *LoginPage;
     QLabel *LoginLabel;
     QLineEdit *UserNameLineEdit;
-    QLineEdit *PassWordLineEdit;
+    QLineEdit *PasswordLineEdit;
     QPushButton *LoginButton;
     QLabel *toRegisterLabel;
+    QCheckBox *PasswordCheckBox;
     QWidget *RegisterPage;
     QLabel *RegisterLabel;
     QLineEdit *UserNameLineEdit_reg;
     QLineEdit *EmailLineEdit_reg;
+    QLineEdit *PasswordLineEdit_reg;
+    QPushButton *RegisterButton;
+    QLabel *toRegisterLabel_2;
     QPushButton *CloseButton;
 
     void setupUi(QWidget *LoginWidget)
@@ -61,14 +66,7 @@ public:
 "							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));\n"
 "	border-radius:50px\n"
 "}\n"
-"/* \345\211\215\345\276\200\347\231\273\345\275\225/\346\263\250\345\206\214\350\266\205\351\223\276\346\216\245 */\n"
-"QLabel#toRegisterLabel {\n"
-"	color: rgb(0, 85, 255);\n"
-"}\n"
-"QLabel#toRegisterLabel:hover {\n"
-"	color: rgb(0, 85, 255);\n"
-"	text-decoration: underline;\n"
-"}\n"
+"\n"
 "/* \345\205\263\351\227\255\346\214\211\351\222\256 */\n"
 "QPushButton#CloseButton {\n"
 "	border: none;\n"
@@ -76,9 +74,9 @@ public:
 "	qproperty-icon: url(:/image/close.png); \n"
 "	qproperty-iconSize: 50px 50px;\n"
 "}\n"
+"\n"
 "/* \346\234\200\345\260\217\345\214\226\346\214\211\351\222\256 */\n"
-"QPushButton#Minimiz"
-                        "eButton {\n"
+"QPushButton#MinimizeButton {\n"
 "	border: none;\n"
 "	background: transparent;\n"
 "	qproperty-icon: url(:/image/minimize.png); \n"
@@ -87,6 +85,13 @@ public:
 "\n"
 "/* \347\231\273\345\275\225\346\214\211\351\222\256 */\n"
 "QPushButton#LoginButton {\n"
+"	background: qlineargradient("
+                        "x1: 0, y1: 0, x2: 1, y2: 1,\n"
+"							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));\n"
+"	border-radius:20px;\n"
+"	color: rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton#RegisterButton {\n"
 "	background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,\n"
 "							stop: 0 rgb(113, 65, 168), stop: 1 rgba(44, 114, 251, 1));\n"
 "	border-radius:20px;\n"
@@ -97,7 +102,19 @@ public:
 "	padding-left:10px;\n"
 "	border:1px solid black;\n"
 "	border-radius:20px\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton#CloseButton: hover {\n"
+"	border: none;\n"
+"	border-radius:25px;\n"
+"	border:1px solid black;\n"
+"	background: transparent;\n"
+"	qproperty-icon: url(:/image/close.png); \n"
+"	qproperty-iconSize: 50px 50px;\n"
+"}\n"
+"\n"
+"\n"
+""));
         frame = new QFrame(LoginWidget);
         frame->setObjectName("frame");
         frame->setGeometry(QRect(0, 0, 800, 480));
@@ -117,17 +134,21 @@ public:
         UserNameLineEdit = new QLineEdit(LoginPage);
         UserNameLineEdit->setObjectName("UserNameLineEdit");
         UserNameLineEdit->setGeometry(QRect(60, 170, 280, 40));
-        PassWordLineEdit = new QLineEdit(LoginPage);
-        PassWordLineEdit->setObjectName("PassWordLineEdit");
-        PassWordLineEdit->setGeometry(QRect(60, 250, 280, 40));
-        PassWordLineEdit->setFrame(true);
-        PassWordLineEdit->setEchoMode(QLineEdit::Password);
+        PasswordLineEdit = new QLineEdit(LoginPage);
+        PasswordLineEdit->setObjectName("PasswordLineEdit");
+        PasswordLineEdit->setGeometry(QRect(60, 250, 280, 40));
+        PasswordLineEdit->setFrame(true);
+        PasswordLineEdit->setEchoMode(QLineEdit::Password);
         LoginButton = new QPushButton(LoginPage);
         LoginButton->setObjectName("LoginButton");
         LoginButton->setGeometry(QRect(50, 370, 300, 50));
         toRegisterLabel = new QLabel(LoginPage);
         toRegisterLabel->setObjectName("toRegisterLabel");
         toRegisterLabel->setGeometry(QRect(50, 430, 110, 20));
+        toRegisterLabel->setStyleSheet(QString::fromUtf8(""));
+        PasswordCheckBox = new QCheckBox(LoginPage);
+        PasswordCheckBox->setObjectName("PasswordCheckBox");
+        PasswordCheckBox->setGeometry(QRect(60, 330, 100, 20));
         stackedWidget->addWidget(LoginPage);
         RegisterPage = new QWidget();
         RegisterPage->setObjectName("RegisterPage");
@@ -136,18 +157,29 @@ public:
         RegisterLabel->setGeometry(QRect(0, 40, 400, 100));
         UserNameLineEdit_reg = new QLineEdit(RegisterPage);
         UserNameLineEdit_reg->setObjectName("UserNameLineEdit_reg");
-        UserNameLineEdit_reg->setGeometry(QRect(90, 220, 181, 41));
+        UserNameLineEdit_reg->setGeometry(QRect(60, 210, 280, 40));
         EmailLineEdit_reg = new QLineEdit(RegisterPage);
         EmailLineEdit_reg->setObjectName("EmailLineEdit_reg");
-        EmailLineEdit_reg->setGeometry(QRect(80, 150, 211, 51));
+        EmailLineEdit_reg->setGeometry(QRect(60, 150, 280, 40));
+        PasswordLineEdit_reg = new QLineEdit(RegisterPage);
+        PasswordLineEdit_reg->setObjectName("PasswordLineEdit_reg");
+        PasswordLineEdit_reg->setGeometry(QRect(60, 270, 280, 40));
+        PasswordLineEdit_reg->setEchoMode(QLineEdit::Password);
+        RegisterButton = new QPushButton(RegisterPage);
+        RegisterButton->setObjectName("RegisterButton");
+        RegisterButton->setGeometry(QRect(50, 370, 300, 50));
+        toRegisterLabel_2 = new QLabel(RegisterPage);
+        toRegisterLabel_2->setObjectName("toRegisterLabel_2");
+        toRegisterLabel_2->setGeometry(QRect(50, 430, 110, 20));
+        toRegisterLabel_2->setStyleSheet(QString::fromUtf8(""));
         stackedWidget->addWidget(RegisterPage);
         CloseButton = new QPushButton(frame);
         CloseButton->setObjectName("CloseButton");
-        CloseButton->setGeometry(QRect(750, 0, 50, 50));
+        CloseButton->setGeometry(QRect(740, 10, 50, 50));
 
         retranslateUi(LoginWidget);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(LoginWidget);
@@ -161,11 +193,17 @@ public:
         UserNameLineEdit->setInputMask(QString());
         UserNameLineEdit->setText(QString());
         UserNameLineEdit->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\347\224\250\346\210\267\345\220\215", nullptr));
-        PassWordLineEdit->setText(QString());
-        PassWordLineEdit->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\345\257\206\347\240\201", nullptr));
+        PasswordLineEdit->setText(QString());
+        PasswordLineEdit->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\345\257\206\347\240\201", nullptr));
         LoginButton->setText(QCoreApplication::translate("LoginWidget", "\347\231\273\345\275\225", nullptr));
-        toRegisterLabel->setText(QCoreApplication::translate("LoginWidget", "\346\262\241\346\234\211\350\264\246\345\217\267? \345\211\215\345\276\200\346\263\250\345\206\214", nullptr));
+        toRegisterLabel->setText(QCoreApplication::translate("LoginWidget", "<html><head/><body><p><a href=\"#\"><span style=\" text-decoration: underline; color:#0078d4;\">\346\262\241\346\234\211\350\264\246\345\217\267? \345\211\215\345\276\200\346\263\250\345\206\214</span></a></p></body></html>", nullptr));
+        PasswordCheckBox->setText(QCoreApplication::translate("LoginWidget", "\346\230\257\345\220\246\346\230\276\347\244\272\345\257\206\347\240\201", nullptr));
         RegisterLabel->setText(QCoreApplication::translate("LoginWidget", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:700;\">Register | \346\263\250\345\206\214</span></p></body></html>", nullptr));
+        UserNameLineEdit_reg->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\347\224\250\346\210\267\345\220\215", nullptr));
+        EmailLineEdit_reg->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\351\202\256\347\256\261", nullptr));
+        PasswordLineEdit_reg->setPlaceholderText(QCoreApplication::translate("LoginWidget", "\345\257\206\347\240\201", nullptr));
+        RegisterButton->setText(QCoreApplication::translate("LoginWidget", "\346\263\250\345\206\214", nullptr));
+        toRegisterLabel_2->setText(QCoreApplication::translate("LoginWidget", "<html><head/><body><p><a href=\"#\"><span style=\" text-decoration: underline; color:#0078d4;\">\345\267\262\346\234\211\350\264\246\345\217\267? \345\211\215\345\276\200\347\231\273\345\275\225</span></a></p></body></html>", nullptr));
         CloseButton->setText(QString());
     } // retranslateUi
 

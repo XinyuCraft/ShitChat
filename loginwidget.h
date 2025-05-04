@@ -40,6 +40,12 @@ private slots:
 
     void on_MinimizeButton_clicked();
 
+    void on_toRegisterLabel_linkActivated(const QString &link);
+
+    void on_PasswordCheckBox_stateChanged(int arg1);
+
+    void on_toRegisterLabel_2_linkActivated(const QString &link);
+
 private:
     void mouseWhere(const QPoint &point);
 
