@@ -223,7 +223,7 @@ public:
 
         retranslateUi(LoginWidget);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(LoginWidget);
